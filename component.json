@@ -1,0 +1,51 @@
+{
+    "title": "Image Moderation",
+    "description": "Our FREE API blocks images with nudity. Build from the ground up, accurate models, best in class support, great price.",
+    "docsUrl": "https://www.moderatecontent.com",
+    "url": "https://api.apis.guru/v2/specs/moderatecontent.com/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://moderatecontent.com/api",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_v2": {
+            "main": "./lib/actions/get_v2.js",
+            "title": "Blocks images with nudity",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
